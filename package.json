@@ -11,5 +11,8 @@
   "keywords": [],
   "devDependencies": {
     "electron": "^26.2.2"
+  },
+  "dependencies": {
+    "openai": "^4.10.0"
   }
 }
