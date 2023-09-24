@@ -16,5 +16,16 @@
   },
   "dependencies": {
     "openai": "^4.10.0"
+  },
+  "build": {
+    "productName": "CodeInspectorX",
+    "appId": "moe.mikaaa.codeinspectorx",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "modulules/icons/icon.ico"
+    }
   }
 }
