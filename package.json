@@ -14,6 +14,7 @@
     "electron": "^26.2.2"
   },
   "dependencies": {
+    "electron-builder": "^24.6.4",
     "openai": "^4.10.0"
   }
 }
