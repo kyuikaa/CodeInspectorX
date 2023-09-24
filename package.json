@@ -11,10 +11,10 @@
   "license": "MIT",
   "keywords": [],
   "devDependencies": {
-    "electron": "^26.2.2"
+    "electron": "^26.2.2",
+    "electron-builder": "^24.6.4"
   },
   "dependencies": {
-    "electron-builder": "^24.6.4",
     "openai": "^4.10.0"
   }
 }
