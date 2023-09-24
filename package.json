@@ -4,7 +4,8 @@
   "description": "The Code Analyzer App is a powerful tool designed for developers and programmers to streamline their coding workflow.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "author": "mikaaaamoe",
   "license": "MIT",
