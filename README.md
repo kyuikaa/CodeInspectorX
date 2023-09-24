@@ -43,3 +43,9 @@ We welcome contributions from the community! If you'd like to contribute to the 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+### Contributor
+<a href="https://github.com/mikaaamoe/CodeInspectorX/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mikaaamoe/CodeInspectorX" />
+</a>
+<br>
