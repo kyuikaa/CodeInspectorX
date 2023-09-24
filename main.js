@@ -7,6 +7,7 @@ let mainWindow;
 let settingsWindow;
 
 let apiKey = '';
+let analysisResult = '';
 
 function createMainWindow() {
     mainWindow = new BrowserWindow({
@@ -26,6 +27,9 @@ function createMainWindow() {
     if (process.env.NODE_ENV === 'development') {
         mainWindow.webContents.openDevTools();
     }
+
+    // Send the analysis result to the renderer process
+    mainWindow.webContents.send('analysis-result', analysisResult);
 }
 
 function createSettingsWindow() {
@@ -59,6 +63,18 @@ const mainMenuTemplate = [
                 accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
                 click() {
                     app.quit();
+                },
+            },
+        ],
+    },
+    {
+        label: 'Edit',
+        submenu: [
+            {
+                label: 'Clear Analysis',
+                click() {
+                    analysisResult = '';
+                    mainWindow.webContents.send('analysis-result', analysisResult);
                 },
             },
         ],
