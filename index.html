@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeInspectorX</title>
-  </head>
-  <body>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
     <header>
-      <nav>
-        <div class="nav-left">
-          <h1>CodeInspectorX</h1>
-        </div>
-        <div class="nav-right">
-          <button id="settingsButton">Settings</button>
-          <button id="analyzeButton">Analyze</button>
-        </div>
-      </nav>
+        <nav>
+            <div class="nav-left">
+                <h1>CodeInspectorX</h1>
+            </div>
+            <div class="nav-right">
+                <button id="settings-button">Settings</button>
+            </div>
+        </nav>
     </header>
+    
     <main>
-      <div class="code-input">
-        <label for="codeInput">Enter Your Code:</label>
-        <textarea
-          id="codeInput"
-          rows="10"
-          cols="50"
-          placeholder="Enter your code here..."
-        ></textarea>
-      </div>
-      <div id="analysisResult" class="result"></div>
+        <section class="code-input">
+            <label for="code-input">Enter your code:</label>
+            <textarea id="code-input" placeholder="Paste your code here..."></textarea>
+            <div class="options">
+                <label for="engine-select">Select analysis engine:</label>
+                <select id="engine-select"></select>
+                <label for="max-tokens-select">Max tokens:</label>
+                <select id="max-tokens-select">
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="150">150</option>
+                </select>
+            </div>
+            <button id="analyze-button" class="analyze-button">Analyze</button>
+        </section>
+
+        <div id="loading-spinner" class="loader"></div>
+        <div id="error-message" class="error-message"></div>
+
+        <section class="result">
+            <button id="copy-button">Copy Result</button>
+            <div id="copy-success-message" class="success-message">Result copied to clipboard!</div>
+            <div id="result-container"></div>
+        </section>
     </main>
+    
     <footer>
-      <p>Powered by OpenAI GPT-3</p>
+        &copy; 2023 CodeInspectorX
     </footer>
+
     <script src="modules/renderer.js"></script>
-  </body>
+</body>
 </html>
