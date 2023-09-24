@@ -8,5 +8,8 @@
   },
   "author": "mikaaaamoe",
   "license": "MIT",
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "electron": "^26.2.2"
+  }
 }
