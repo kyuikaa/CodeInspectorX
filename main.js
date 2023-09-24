@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Menu, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu, dialog, shell } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const openai = require('openai');
@@ -79,7 +79,51 @@ const mainMenuTemplate = [
             },
         ],
     },
+    {
+        label: 'View',
+        submenu: [
+            {
+                label: 'Save Analysis',
+                click() {
+                    if (analysisResult) {
+                        saveAnalysisToFile(analysisResult);
+                    } else {
+                        dialog.showMessageBox(mainWindow, {
+                            type: 'info',
+                            message: 'No analysis result to save.',
+                        });
+                    }
+                },
+            },
+        ],
+    },
 ];
+
+function saveAnalysisToFile(resultText) {
+    const filePath = dialog.showSaveDialogSync(mainWindow, {
+        title: 'Save Analysis Result',
+        defaultPath: 'analysis.txt',
+        filters: [
+            {
+                name: 'Text Files',
+                extensions: ['txt'],
+            },
+        ],
+    });
+
+    if (filePath) {
+        try {
+            fs.writeFileSync(filePath, resultText, 'utf-8');
+            dialog.showMessageBox(mainWindow, {
+                type: 'info',
+                message: 'Analysis result saved successfully.',
+            });
+        } catch (error) {
+            dialog.showErrorBox('Error Saving Analysis', 'An error occurred while saving the analysis result.');
+            console.error('Error saving analysis:', error);
+        }
+    }
+}
 
 function loadApiKey() {
     const settingsPath = path.join(app.getPath('userData'), 'settings.json');
