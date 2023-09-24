@@ -104,3 +104,21 @@ footer {
     padding: 1rem 0;
     font-size: 0.9rem;
 }
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+
+    textarea {
+        height: 200px;
+    }
+
+    .result {
+        margin-top: 1rem;
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+}
