@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>CodeInspectorX</title>
-</head>
-<body>
-<header>
-    <nav>
+  </head>
+  <body class="dark-mode">
+    <header>
+      <nav>
         <div class="nav-left">
-            <h1>CodeInspectorX</h1>
+          <h1>CodeInspectorX</h1>
         </div>
         <div class="nav-right">
-            <button id="settingsButton">Settings</button>
-            <button id="analyzeButton">Analyze</button>
+          <button id="settingsButton">Settings</button>
+          <button id="analyzeButton">Analyze</button>
         </div>
-    </nav>
-</header>
+      </nav>
+    </header>
     <main>
-        <div class="code-input">
-            <label for="codeInput">Enter Your Code:</label>
-            <textarea id="codeInput" rows="10" cols="50" placeholder="Enter your code here..."></textarea>
-        </div>
-        <div id="analysisResult" class="result"></div>
+      <div class="code-input">
+        <label for="codeInput">Enter Your Code:</label>
+        <textarea
+          id="codeInput"
+          rows="10"
+          cols="50"
+          placeholder="Enter your code here..."
+        ></textarea>
+      </div>
+      <div id="analysisResult" class="result"></div>
     </main>
     <footer>
-        <p>Powered by OpenAI GPT-3</p>
+      <p>Powered by OpenAI GPT-3</p>
     </footer>
     <script src="modules/renderer.js"></script>
-</body>
+  </body>
 </html>
