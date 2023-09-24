@@ -111,7 +111,7 @@ const engineOptions = [
     'curie',         
 ];
 
-const maxTokensOptions = [50, 100, 150]; // Customizable max tokens options
+const maxTokensOptions = [50, 100, 150];
 
 function loadApiKey() {
     const settingsPath = path.join(app.getPath('userData'), 'settings.json');
@@ -137,7 +137,6 @@ function saveApiKey(apiKey) {
     fs.writeFileSync(settingsPath, JSON.stringify(settings), 'utf-8');
 }
 
-// Added functionality to set analysis options
 ipcMain.on('set-analysis-options', (event, options) => {
     analysisOptions = { ...analysisOptions, ...options };
     saveApiKey(apiKey);
