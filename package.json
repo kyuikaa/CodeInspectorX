@@ -1,0 +1,11 @@
+{
+  "name": "codeinspectorx",
+  "version": "1.0.0",
+  "description": "The Code Analyzer App is a powerful tool designed for developers and programmers to streamline their coding workflow.",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "author": "mikaaaamoe",
+  "license": "MIT"
+}
