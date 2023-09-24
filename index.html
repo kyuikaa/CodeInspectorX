@@ -1,54 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
     <title>CodeInspectorX</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
     <header>
-        <nav>
-            <div class="nav-left">
-                <h1>CodeInspectorX</h1>
-            </div>
-            <div class="nav-right">
-                <button id="settings-button">Settings</button>
-            </div>
-        </nav>
+      <nav>
+        <div class="nav-left">
+          <h1>CodeInspectorX</h1>
+        </div>
+        <div class="nav-right">
+          <button id="copy-button" class="analyze-button">
+            Copy to Clipboard
+          </button>
+        </div>
+      </nav>
     </header>
-    
     <main>
-        <section class="code-input">
-            <label for="code-input">Enter your code:</label>
-            <textarea id="code-input" placeholder="Paste your code here..."></textarea>
-            <div class="options">
-                <label for="engine-select">Select analysis engine:</label>
-                <select id="engine-select"></select>
-                <label for="max-tokens-select">Max tokens:</label>
-                <select id="max-tokens-select">
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="150">150</option>
-                </select>
-            </div>
-            <button id="analyze-button" class="analyze-button">Analyze</button>
-        </section>
-
-        <div id="loading-spinner" class="loader"></div>
-        <div id="error-message" class="error-message"></div>
-
-        <section class="result">
-            <button id="copy-button">Copy Result</button>
-            <div id="copy-success-message" class="success-message">Result copied to clipboard!</div>
-            <div id="result-container"></div>
-        </section>
+      <div class="code-input">
+        <label for="code-input">Enter your code:</label>
+        <textarea
+          id="code-input"
+          placeholder="Paste your code here..."
+        ></textarea>
+        <div class="options">
+          <label for="engine-select">Select analysis engine:</label>
+          <select id="engine-select"></select>
+          <label for="max-tokens-select">Max tokens:</label>
+          <select id="max-tokens-select">
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="150">150</option>
+          </select>
+        </div>
+      </div>
+      <button class="analyze-button">Analyze Code</button>
+      <div class="result"></div>
     </main>
-    
-    <footer>
-        &copy; 2023 CodeInspectorX
-    </footer>
-
-    <script src="modules/renderer.js"></script>
-</body>
+    <footer>&copy; 2023 CodeInspectorX</footer>
+    <script> src="modules/renderer.js" </script>
+    <script>
+      const { clipboard } = require("electron");
+      const copyButton = document.getElementById("copy-button");
+      const copyMessage = document.getElementById("copy-message");
+      copyButton.addEventListener("click", () => {
+        const resultContent =
+          "This is the result content that you want to copy.";
+        clipboard.writeText(resultContent);
+        copyMessage.style.display = "block";
+        setTimeout(() => {
+          copyMessage.style.display = "none";
+        }, 3000);
+      });
+    </script>
+  </body>
 </html>
