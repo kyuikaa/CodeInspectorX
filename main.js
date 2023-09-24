@@ -9,6 +9,12 @@ let settingsWindow;
 let apiKey = '';
 let analysisResult = '';
 
+// Added options for customizing the analysis
+let analysisOptions = {
+    engine: 'davinci-codex', // Default engine
+    maxTokens: 100,          // Default max tokens
+};
+
 function createMainWindow() {
     mainWindow = new BrowserWindow({
         width: 800,
@@ -28,8 +34,9 @@ function createMainWindow() {
         mainWindow.webContents.openDevTools();
     }
 
-    // Send the analysis result to the renderer process
+    // Send the analysis result and options to the renderer process
     mainWindow.webContents.send('analysis-result', analysisResult);
+    mainWindow.webContents.send('analysis-options', analysisOptions);
 }
 
 function createSettingsWindow() {
@@ -99,31 +106,13 @@ const mainMenuTemplate = [
     },
 ];
 
-function saveAnalysisToFile(resultText) {
-    const filePath = dialog.showSaveDialogSync(mainWindow, {
-        title: 'Save Analysis Result',
-        defaultPath: 'analysis.txt',
-        filters: [
-            {
-                name: 'Text Files',
-                extensions: ['txt'],
-            },
-        ],
-    });
+// Added options for customizing the analysis
+const engineOptions = [
+    'davinci-codex',    // Default engine
+    'curie',             // Another available engine
+];
 
-    if (filePath) {
-        try {
-            fs.writeFileSync(filePath, resultText, 'utf-8');
-            dialog.showMessageBox(mainWindow, {
-                type: 'info',
-                message: 'Analysis result saved successfully.',
-            });
-        } catch (error) {
-            dialog.showErrorBox('Error Saving Analysis', 'An error occurred while saving the analysis result.');
-            console.error('Error saving analysis:', error);
-        }
-    }
-}
+const maxTokensOptions = [50, 100, 150]; // Customizable max tokens options
 
 function loadApiKey() {
     const settingsPath = path.join(app.getPath('userData'), 'settings.json');
@@ -133,15 +122,27 @@ function loadApiKey() {
         if (settings.apiKey) {
             apiKey = settings.apiKey;
         }
+        if (settings.engine) {
+            analysisOptions.engine = settings.engine;
+        }
+        if (settings.maxTokens) {
+            analysisOptions.maxTokens = settings.maxTokens;
+        }
     }
 }
 
 function saveApiKey(apiKey) {
     const settingsPath = path.join(app.getPath('userData'), 'settings.json');
-    const settings = { apiKey };
+    const settings = { apiKey, ...analysisOptions };
 
     fs.writeFileSync(settingsPath, JSON.stringify(settings), 'utf-8');
 }
+
+// Added functionality to set analysis options
+ipcMain.on('set-analysis-options', (event, options) => {
+    analysisOptions = { ...analysisOptions, ...options };
+    saveApiKey(apiKey);
+});
 
 ipcMain.on('save-settings', (event, apiKeyInput) => {
     apiKey = apiKeyInput;
@@ -160,13 +161,13 @@ ipcMain.on('analyze-code', async (event, code) => {
 
     const gpt3 = new openai({
         apiKey,
-        engine: 'davinci-codex',
+        engine: analysisOptions.engine,
     });
 
     try {
         const response = await gpt3.completions.create({
             prompt: code,
-            max_tokens: 100,
+            max_tokens: analysisOptions.maxTokens,
         });
 
         const analysisResult = response.choices[0].text;
@@ -174,6 +175,7 @@ ipcMain.on('analyze-code', async (event, code) => {
     } catch (error) {
         dialog.showErrorBox('Error Analyzing Code', 'An error occurred during code analysis.');
         console.error('Error analyzing code:', error);
+        mainWindow.webContents.send('analysis-error', error.message);
     }
 });
 
