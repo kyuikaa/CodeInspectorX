@@ -7,24 +7,27 @@ const loadingSpinner = document.getElementById('loading-spinner');
 const errorMessage = document.getElementById('error-message');
 const copyButton = document.getElementById('copy-button');
 const copySuccessMessage = document.getElementById('copy-success-message');
+const engineSelect = document.getElementById('engine-select');
 
-analyzeButton.addEventListener('click', () => {
-    const code = codeInput.value;
-    resultContainer.style.display = 'none';
-    errorMessage.style.display = 'none';
-    loadingSpinner.style.display = 'block';
-
-    ipcRenderer.send('analyze-code', code);
+ipcRenderer.on('engine-options', (event, engineOptions) => {
+  engineSelect.innerHTML = '';
+  engineOptions.forEach((engine) => {
+    const option = document.createElement('option');
+    option.value = engine.value;
+    option.textContent = engine.name;
+    engineSelect.appendChild(option);
+  });
 });
 
-copyButton.addEventListener('click', () => {
-    if (resultContainer.textContent) {
-        clipboard.writeText(resultContainer.textContent);
-        copySuccessMessage.style.display = 'block';
-        setTimeout(() => {
-            copySuccessMessage.style.display = 'none';
-        }, 2000);
-    }
+analyzeButton.addEventListener('click', () => {
+  const code = codeInput.value;
+  resultContainer.style.display = 'none';
+  errorMessage.style.display = 'none';
+  loadingSpinner.style.display = 'block';
+
+  const selectedEngine = engineSelect.value; 
+
+  ipcRenderer.send('analyze-code', code, selectedEngine);
 });
 
 ipcRenderer.on('analysis-result', (event, analysisResult) => {
