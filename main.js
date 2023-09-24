@@ -106,10 +106,9 @@ const mainMenuTemplate = [
     },
 ];
 
-// Added options for customizing the analysis
 const engineOptions = [
-    'davinci-codex',    // Default engine
-    'curie',             // Another available engine
+    'davinci-codex',    
+    'curie',         
 ];
 
 const maxTokensOptions = [50, 100, 150]; // Customizable max tokens options
