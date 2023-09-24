@@ -1,22 +1,24 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: #121212;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
+
 header {
-    background-color: #007acc;
-    color: #fff;
+    background-color: #0d1117;
+    color: #ffffff;
     width: 100%;
     padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     z-index: 1000;
@@ -32,6 +34,7 @@ nav {
 }
 
 .nav-left h1 {
+    font-family: 'Poppins', sans-serif;
     font-size: 2rem;
     margin: 0;
 }
@@ -43,7 +46,7 @@ nav {
 
 button {
     padding: 0.5rem 1rem;
-    background-color: #007acc;
+    background-color: #238636;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -51,31 +54,36 @@ button {
     font-size: 1rem;
     transition: background-color 0.3s ease;
     margin-left: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
 }
 
 button:hover {
-    background-color: #005b8e;
+    background-color: #2ea043;
 }
+
 
 main {
     max-width: 800px;
-    margin-top: 4rem;
+    margin-top: 5rem;
     padding: 2rem;
-    background-color: #fff;
+    background-color: #1e1e1e;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     width: 90%;
     overflow: hidden;
     text-align: center;
+    border: 1px solid #333;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
-
-
 .code-input label {
-    font-weight: bold;
+    color: #ffffff;
     font-size: 1.2rem;
-    color: #333;
     display: block;
     margin-bottom: 1rem;
 }
@@ -84,92 +92,55 @@ textarea {
     width: 100%;
     height: 300px;
     padding: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
     border-radius: 4px;
     resize: vertical;
     font-size: 1rem;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: #121212;
+    color: #ffffff;
     font-family: 'Courier New', monospace;
     line-height: 1.5;
     margin-top: 1rem;
-    margin-left: 1rem;
+    overflow: hidden;
 }
+
 
 button.analyze-button {
     padding: 0.5rem 1rem;
-    background-color: #007acc;
+    background-color: #238636;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
 }
 
 button.analyze-button:hover {
-    background-color: #005b8e;
+    background-color: #2ea043;
 }
+
 
 .result {
     margin-top: 2rem;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
     border-radius: 4px;
     padding: 1.5rem;
     width: 100%;
     white-space: pre-wrap;
     font-size: 1rem;
-    background-color: #fff;
-    color: #333;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    overflow: hidden;
 }
 
+
 footer {
-    background-color: #007acc;
-    color: #fff;
+    background-color: #0d1117;
+    color: #ffffff;
     text-align: center;
     padding: 1rem 0;
     font-size: 0.9rem;
-}
-
-
-body.dark-mode {
-    background-color: #0d1117;
-    color: #c9d1d9;
-}
-
-header.dark-mode {
-    background-color: #161b22;
-    color: #c9d1d9;
-}
-
-main.dark-mode {
-    background-color: #161b22;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.code-input.dark-mode label {
-    color: #c9d1d9;
-}
-
-textarea.dark-mode {
-    background-color: #0d1117;
-    color: #c9d1d9;
-}
-
-button.analyze-button.dark-mode {
-    background-color: #238636;
-}
-
-button.analyze-button.dark-mode:hover {
-    background-color: #2ea043;
-}
-
-.result.dark-mode {
-    background-color: #161b22;
-    color: #c9d1d9;
-}
-
-footer.dark-mode {
-    background-color: #161b22;
-    color: #c9d1d9;
 }
