@@ -25,21 +25,21 @@ analyzeButton.addEventListener('click', () => {
   errorMessage.style.display = 'none';
   loadingSpinner.style.display = 'block';
 
-  const selectedEngine = engineSelect.value; 
+  const selectedEngine = engineSelect.value;
 
   ipcRenderer.send('analyze-code', code, selectedEngine);
 });
 
 ipcRenderer.on('analysis-result', (event, analysisResult) => {
-    loadingSpinner.style.display = 'none';
-    resultContainer.style.display = 'block';
-    errorMessage.style.display = 'none';
-    resultContainer.textContent = analysisResult;
+  loadingSpinner.style.display = 'none';
+  resultContainer.style.display = 'block';
+  errorMessage.style.display = 'none';
+  resultContainer.textContent = analysisResult;
 });
 
 ipcRenderer.on('analysis-error', (event, error) => {
-    loadingSpinner.style.display = 'none';
-    resultContainer.style.display = 'none';
-    errorMessage.style.display = 'block';
-    errorMessage.textContent = `An error occurred: ${error}`;
+  loadingSpinner.style.display = 'none';
+  resultContainer.style.display = 'none';
+  errorMessage.style.display = 'block';
+  errorMessage.textContent = `An error occurred: ${error}`;
 });
