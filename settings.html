@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head> </head>
 
-  <body>
-    <div class="settings-container">
-      <h2>Settings</h2>
-      <label for="apiKeyInput">OpenAI API Key:</label>
-      <input
-        type="text"
-        id="apiKeyInput"
-        placeholder="Enter your OpenAI API Key"
-      />
-      <button id="saveSettingsButton">Save</button>
-    </div>
-    <script>
-      const { ipcRenderer } = require("electron");
-      const apiKeyInput = document.getElementById("apiKeyInput");
-      const saveSettingsButton = document.getElementById("saveSettingsButton");
+<head> </head>
 
-      saveSettingsButton.addEventListener("click", () => {
-        const apiKey = apiKeyInput.value;
-        ipcRenderer.send("save-settings", apiKey);
-      });
-    </script>
-  </body>
+<body>
+  <div class="settings-container">
+    <h2>Settings</h2>
+    <label for="apiKeyInput">OpenAI API Key:</label>
+    <input type="text" id="apiKeyInput" placeholder="Enter your OpenAI API Key" />
+    <button id="saveSettingsButton">Save</button>
+  </div>
+  <script>
+    const { ipcRenderer } = require("electron");
+    const apiKeyInput = document.getElementById("apiKeyInput");
+    const saveSettingsButton = document.getElementById("saveSettingsButton");
+
+    saveSettingsButton.addEventListener("click", () => {
+      const apiKey = apiKeyInput.value;
+      ipcRenderer.send("save-settings", apiKey);
+    });
+  </script>
+</body>
+
 </html>
