@@ -7,6 +7,10 @@
     "start": "electron .",
     "build": "electron-builder"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikaaamoe/CodeInspectorX.git"
+  },
   "author": "mikaaaamoe",
   "license": "MIT",
   "keywords": [],
@@ -14,6 +18,25 @@
     "electron": "^26.2.2",
     "electron-builder": "^24.6.4"
   },
+  "eslintConfig": {
+    "extends": "eslint:recommended"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "files": [
+    "main.js",
+    "index.html",
+    "src/"
+  ],
+  "keywords": [
+    "code",
+    "inspector",
+    "analyzer",
+    "linting",
+    "editor"
+  ],
   "dependencies": {
     "openai": "^4.10.0"
   },
