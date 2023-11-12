@@ -42,7 +42,7 @@ function createMainWindow() {
         mainWindow.webContents.openDevTools();
     }
 
-   
+
     mainWindow.webContents.send('analysis-result', analysisResult);
     mainWindow.webContents.send('analysis-options', analysisOptions);
     mainWindow.webContents.send('engine-options', engineOptions);
