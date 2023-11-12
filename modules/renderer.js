@@ -8,6 +8,7 @@ const errorMessage = document.getElementById('error-message');
 const copyButton = document.getElementById('copy-button');
 const copySuccessMessage = document.getElementById('copy-success-message');
 const engineSelect = document.getElementById('engine-select');
+const resultSection = document.getElementById('result-section');
 
 ipcRenderer.on('engine-options', (event, engineOptions) => {
   engineSelect.innerHTML = '';
@@ -27,7 +28,12 @@ analyzeButton.addEventListener('click', () => {
 
   const selectedEngine = engineSelect.value;
 
-  ipcRenderer.send('analyze-code', code, selectedEngine);
+  try {
+    const analysisResult = await ipcRenderer.send('analyze-code', code, selectedEngine);  
+    showResult(analysisResult);
+  } catch (error) {
+    showError(error); 
+  }
 });
 
 /**
@@ -48,5 +54,10 @@ ipcRenderer.on('analysis-error', (event, error) => {
   loadingSpinner.style.display = 'none';
   resultContainer.style.display = 'none';
   errorMessage.style.display = 'block';
-  errorMessage.textContent = `An error occurred: ${error}`;
+
+  try {
+    errorMessage.textContent = `An error occurred: ${error}`;  
+  } catch (err) {
+    console.error('Failed to set error message:', err);
+  }
 });
