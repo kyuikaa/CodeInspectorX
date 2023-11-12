@@ -12,8 +12,13 @@
     "url": "https://github.com/mikaaamoe/CodeInspectorX.git"
   },
   "author": "mikaaaamoe",
-  "license": "MIT",
-  "keywords": [],
+  "keywords": [
+    "code",
+    "inspector",
+    "analyzer",
+    "linting",
+    "editor"
+  ],
   "devDependencies": {
     "electron": "^26.2.2",
     "electron-builder": "^24.6.4"
@@ -29,13 +34,6 @@
     "main.js",
     "index.html",
     "src/"
-  ],
-  "keywords": [
-    "code",
-    "inspector",
-    "analyzer",
-    "linting",
-    "editor"
   ],
   "dependencies": {
     "openai": "^4.10.0"
