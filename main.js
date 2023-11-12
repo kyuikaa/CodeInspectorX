@@ -17,7 +17,8 @@ let analysisOptions = {
 
 const engineOptions = [
     { name: 'Davinci Codex', value: 'davinci-codex' }, // Default engine
-    { name: 'Curie', value: 'curie' },                 // Another available engine
+    { name: 'Curie', value: 'curie' },                 // Another available 
+    { name: 'GPT', value: 'gpt' },              
     // Add more engines here
 ];
 
