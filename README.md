@@ -28,7 +28,7 @@ Whether you're a seasoned developer or just getting started, the CodeInspectorX 
 
 To get started with the CodeInspectorX, follow these steps:
 
-1. **Installation:** Download and install the app on your preferred platform (Windows, macOS, or Linux).
+1. **Installation:** Download and install the app
 
 2. **Open a Project:** Launch the app and open your coding project.
 
