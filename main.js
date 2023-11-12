@@ -1,7 +1,12 @@
 const { app, BrowserWindow, ipcMain, Menu, dialog, shell } = require('electron');
 const path = require('path');
 const fs = require('fs');
-const openai = require('openai');
+try {
+  const openai = require('openai'); 
+} catch (error) {
+  console.error('Error loading OpenAI module:', error);
+}
+
 
 let mainWindow;
 let settingsWindow;
