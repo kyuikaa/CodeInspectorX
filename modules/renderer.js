@@ -30,6 +30,13 @@ analyzeButton.addEventListener('click', () => {
   ipcRenderer.send('analyze-code', code, selectedEngine);
 });
 
+/**
+ * Handler for the 'analysis-result' event sent by the main process.
+ * Updates the UI to show the analysis result and hide the loading spinner.
+ *
+ * @param {Object} event - The IPC event object
+ * @param {string} analysisResult - The code analysis result text
+ */
 ipcRenderer.on('analysis-result', (event, analysisResult) => {
   loadingSpinner.style.display = 'none';
   resultContainer.style.display = 'block';
